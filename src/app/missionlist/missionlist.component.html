@@ -1,0 +1,30 @@
+
+<mat-card-title>Mission List</mat-card-title>
+<div  class="heroes" style="padding: 20px; background-color: pink;">
+    <mat-card  *ngFor="let d of data" style="width: 70%; margin: 10px 15% 10px 15%;">
+        
+        <mat-card-header>
+            <mat-icon mat-card-avatar><img mat-card-avatar [src]="d['links']['mission_patch_small']" alt="teso" /></mat-icon>
+            <mat-card-title>Mission_name: {{d["mission_name"]}}</mat-card-title>
+            <mat-card-subtitle>launch_year: {{d["launch_year"]}}</mat-card-subtitle>
+         
+        </mat-card-header>
+        <mat-card-content>
+            <p>Detail:{{d["details"]}}</p>
+         </mat-card-content>
+      
+
+      <a routerLink="/detail"
+            routerLinkActive="active" >
+        <button   mat-mini-fab color="warn" [class.selected]="d === selectedMi"
+         type="button" (click)="onSelect(d)" >
+            Detail
+        </button>
+      </a> 
+    <mat-divider></mat-divider>
+    </mat-card>
+    
+</div>
+
+
+<app-missiondetail [mission]="selectedMi"></app-missiondetail>
